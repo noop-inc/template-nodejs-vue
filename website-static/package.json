@@ -9,10 +9,10 @@
   },
   "author": "Noop Inc <hello@noop.dev>",
   "dependencies": {
-    "vue": "^3.2.37"
+    "vue": "^3.4.10"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
-    "vite": "^5.0.7"
+    "@vitejs/plugin-vue": "^5.0.3",
+    "vite": "^5.0.11"
   }
 }

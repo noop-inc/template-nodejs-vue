@@ -12,13 +12,12 @@ To create and run an instance of this Template [install Workshop](https://noop.d
 
 Once your Application is deployed (locally in Workshop or in Cloud), visit the associated endpoint to interact with the example todo list app.
 
------
+---
 
 This repo uses:
 
-| Software   | Version        |
-|------------|----------------|
-| Noop       | v2.0.111       |
-| Node       | v20.7.0        |
-| Express    | 5.0.0-beta.1   |
-| Vue        | 3.2.37         |
+| Software | Version       |
+| -------- | ------------- |
+| Node     | v20.x.x       |
+| Express  | v5.0.0-beta.1 |
+| Vue      | v3.4.10       |

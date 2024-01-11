@@ -1,7 +1,8 @@
+name: Nodejs Vue Template Todo App
 components:
   - name: TodoApi
     type: service
-    image: node:18-alpine
+    image: node:20-alpine
     root: api-service
     port: 3000
     build:
@@ -32,7 +33,7 @@ components:
 
   - name: TodoWebsite
     type: static
-    image: node:18-alpine
+    image: node:20-alpine
     root: website-static
     hosting:
       spa: true
