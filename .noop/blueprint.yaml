@@ -15,7 +15,7 @@ components:
         - copy: dynamodb.js
         - copy: s3.js
     runtime:
-      command: npm start
+      command: node index.js
       resources:
         - TodoItems
         - TodoUploads
