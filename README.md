@@ -1,3 +1,5 @@
+poke
+
 # Nodejs + Vue Monorepo Noop Template
 
 This repository contains a minimal foundation for a Nodejs API backend with a Vue frontend organized as a monorepo. The complete application consists of the Nodejs API backend, Vue frontend, Amazon DynamoDB for record storage and Amazon S3 for image upload storage.
