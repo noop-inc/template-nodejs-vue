@@ -1,5 +1,5 @@
 {
-  "name": "blueprint-todo-nodejs-vue",
+  "name": "template-todo-nodejs-react",
   "private": true,
   "type": "module",
   "engines": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "common-eslint": "eslint --cache --cache-location node_modules/.cache/.eslintcache",
-    "common-prettier": "prettier \"**/*.{htm,html,json,md,markdown,yml,yaml,css,scss}\" --cache",
+    "common-prettier": "prettier \"**/*.{css,htm,html,json,md,markdown,yml,yaml}\" --cache",
     "common-sequential": "concurrently --raw --max-processes 1",
     "fix": "npm run common-sequential -- npm:fix-*",
     "fix-eslint": "npm run common-eslint -- --fix",
@@ -19,16 +19,20 @@
   },
   "author": "Noop Inc <hello@noop.dev>",
   "devDependencies": {
-    "@eslint/eslintrc": "^3.1.0",
-    "@eslint/js": "^9.5.0",
-    "concurrently": "^8.2.2",
-    "eslint": "^9.5.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.31.0",
+    "@eslint/json": "^0.13.1",
+    "@eslint/markdown": "^7.1.0",
+    "concurrently": "^9.2.0",
+    "eslint": "^9.31.0",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-vue": "^9.26.0",
-    "prettier": "^3.3.2",
-    "vue-eslint-parser": "^9.4.3"
+    "eslint-plugin-vue": "^10.3.0",
+    "prettier": "^3.6.2",
+    "vue-eslint-parser": "^10.2.0"
   },
   "overrides": {
-    "eslint": "$eslint"
+    "eslint-config-standard": {
+      "eslint": "$eslint"
+    }
   }
 }

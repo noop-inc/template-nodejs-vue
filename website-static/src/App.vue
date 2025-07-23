@@ -197,6 +197,8 @@ onBeforeUnmount(() => {
               class="form-input edit-description"
               type="text"
               autocomplete="off"
+              minlength="1"
+              maxlength="256"
               @blur="editId = null"
             >
             <input
@@ -208,7 +210,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
       <div
-        v-if="images && images.length"
+        v-if="images?.length"
         class="image-preview-grid"
       >
         <span
