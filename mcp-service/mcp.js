@@ -15,11 +15,11 @@ const instructions = await readFile(new URL('./instructions.md', import.meta.url
 const externalUrlToImageId = async externalUrl => {
   const response = await fetch(externalUrl)
   if (!response.ok) {
-    throw new Error(`Failed to fetch image from external URL: ${externalUrl}`)
+    throw new Error(`Failed to fetch image from external URL: ${externalUrl}.`)
   }
   const mimeType = response.headers.get('content-type')
   if (!mimeType) {
-    throw new Error(`No content type found for image at URL: ${externalUrl}`)
+    throw new Error(`No content type found for image at URL: ${externalUrl}.`)
   }
   if (!mimeType.startsWith('image/')) {
     throw new Error(`Invalid content type for image at URL: ${externalUrl}. Expected image/* but got ${mimeType}.`)
@@ -96,7 +96,13 @@ const structureTodoItemContent = item =>
   ]
 
 const structureImageContent = async imageId => {
-  const response = await getObject(imageId)
+  let response
+  try {
+    response = await getObject(imageId)
+  } catch (error) {
+    if (error.code === 'NoSuchKey') throw new Error(`Image: ${imageId} not found.`)
+    throw error
+  }
 
   const chunks = []
   for await (const chunk of response.Body) {
@@ -240,6 +246,7 @@ const mcpTools = {
     },
     handler: async ({ todoId }) => {
       const item = await getItem(todoId)
+      if (!item?.id) throw new Error(`Todo item: ${todoId} not found.`)
       const structuredContent = item
       const content = await structureTodoItemAndImageContent(item)
       return { content, structuredContent }
@@ -264,7 +271,7 @@ const mcpTools = {
     },
     handler: async ({ description, images: files }) => {
       if (!description?.length) {
-        throw new Error('Description is required')
+        throw new Error('Description is required.')
       }
       if (description.length > 256) {
         throw new Error('Description cannot exceed 256 characters.')
@@ -272,7 +279,7 @@ const mcpTools = {
       const images = []
       if (files) {
         if (files.length > 6) {
-          throw new Error('Cannot link more than 6 images to todo item')
+          throw new Error('Cannot link more than 6 images to todo item.')
         }
         await Promise.all(
           files.map(async file => {
@@ -313,13 +320,14 @@ const mcpTools = {
     handler: async ({ todoId, ...body }) => {
       if ('description' in body) {
         if (!body.description?.length) {
-          throw new Error('Description is required')
+          throw new Error('Description is required.')
         }
         if (body.description.length > 256) {
           throw new Error('Description cannot exceed 256 characters.')
         }
       }
       const existingItem = await getItem(todoId)
+      if (!existingItem?.id) throw new Error(`Todo item: ${todoId} not found.`)
       const updatedItem = { ...existingItem, ...body }
       const item = await putItem(updatedItem)
       const structuredContent = item
@@ -343,6 +351,7 @@ const mcpTools = {
     },
     handler: async ({ todoId }) => {
       const item = await getItem(todoId)
+      if (!item?.id) throw new Error(`Todo item: ${todoId} not found.`)
       const images = item.images || []
       await Promise.all([
         deleteItem(todoId),
