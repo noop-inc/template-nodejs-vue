@@ -222,10 +222,10 @@ const mcpTools = {
       return { content, structuredContent }
     }
   },
-  getTodo: {
+  retrieveTodo: {
     config: {
-      title: 'Get Todo Item',
-      description: 'Gets a todo item by id. Returns the requested todo item and its linked images.',
+      title: 'Retrieve Todo Item',
+      description: 'Retrieves a todo item by id. Returns the requested todo item and its linked images.',
       inputSchema: {
         todoId: TodoSchema.id
       },
@@ -235,7 +235,7 @@ const mcpTools = {
         idempotentHint: true,
         openWorldHint: false,
         readOnlyHint: true,
-        title: 'Get Todo Item'
+        title: 'Retrieve Todo Item'
       }
     },
     handler: async ({ todoId }) => {
@@ -327,10 +327,10 @@ const mcpTools = {
       return { content, structuredContent }
     }
   },
-  deleteTodo: {
+  removeTodo: {
     config: {
-      title: 'Delete Todo Item',
-      description: 'Delete a todo item by id and its linked images. Returns a confirmation that the requested todo item and its linked images have been deleted.',
+      title: 'Remove Todo Item',
+      description: 'Requires a todo item id as input. Removes the requested todo item and its linked images. Returns a confirmation that the requested todo item and its linked images have been removed.',
       inputSchema: { todoId: TodoSchema.id },
       outputSchema: { id: TodoSchema.id, deleted: z.boolean() },
       annotations: {
@@ -338,7 +338,7 @@ const mcpTools = {
         idempotentHint: false,
         openWorldHint: false,
         readOnlyHint: false,
-        title: 'Delete Todo Item'
+        title: 'Remove Todo Item'
       }
     },
     handler: async ({ todoId }) => {
@@ -369,10 +369,10 @@ const mcpTools = {
       }
     }
   },
-  getImage: {
+  retrieveImage: {
     config: {
-      title: 'Get Image',
-      description: 'Gets an image by id. Returns the requested image and its linked todo item.',
+      title: 'Retrieve Image',
+      description: 'Retrieves an image by id. Returns the requested image and its linked todo item.',
       inputSchema: {
         imageId: ImageIdSchema
       },
@@ -382,7 +382,7 @@ const mcpTools = {
         idempotentHint: true,
         openWorldHint: false,
         readOnlyHint: true,
-        title: 'Get Image'
+        title: 'Retrieve Image'
       }
     },
     handler: async ({ imageId }) => {
