@@ -14,7 +14,7 @@ Once your application is deployed (locally in Workshop or in Cloud), visit the a
 
 ## Using with Claude Desktop
 
-To use Claude Desktop to interface with the applications's MCP Server service component, add the following to your Claude Desktop’s configuration file. This file will be located at either `~/Library/Application Support/Claude/claude_desktop_config.json` on Mac or `%APPDATA%\Claude\claude_desktop_config.json` on Windows. Please note, the URL listed below will need to be adjusted if your application is exposed at a different endpoint. Thereafter, you will need to open or restart Claude Desktop for the configuration changes to take effect.
+To use Claude Desktop to interface with the application's MCP Server service component, add the following to your Claude Desktop configuration file. This file will be located at either `~/Library/Application Support/Claude/claude_desktop_config.json` on Mac or `%APPDATA%\Claude\claude_desktop_config.json` on Windows. Please note, the URL listed below will need to be adjusted if your application is exposed at a different endpoint. Thereafter, you will need to open or restart Claude Desktop for the configuration changes to take effect.
 
 ```json
 {
